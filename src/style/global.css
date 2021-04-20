@@ -1,0 +1,23 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.App{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://cdn.wallpapersafari.com/67/39/7xp51q.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.no-selectable{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}

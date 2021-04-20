@@ -14,6 +14,9 @@ import Register from './components/login/Register';
 import PswdRecovery from './components/login/PswdRecovery';
 import PswdChange from './components/login/PswdChange';
 
+//------Style------//
+import './style/global.css'
+
 //------------------//
 //------Export------//
 //------------------//
