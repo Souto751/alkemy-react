@@ -14,7 +14,7 @@ export default function PswdChange() {
                 <input type="password" className="change-input" placeholder="Confirm new password..." />
                 <button className="btn btn-primary">Send</button>
             </form>
-            <p className="to-login-line">Back to <Link className="to-login" to="/register">Login</Link></p>
+            <p className="to-login-line">Back to <Link className="to-login" to="/login">Login</Link></p>
         </div>
     )
 }
