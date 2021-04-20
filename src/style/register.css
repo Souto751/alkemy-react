@@ -1,0 +1,68 @@
+.register{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    width: 90%;
+    height: 90%;
+    max-width: 400px;
+    background: #2a2b2cf7;
+    box-shadow: 0 0 5px 0 #007bff;
+    border-radius: 10px;
+}
+
+.register-title{
+    color: #fff;
+    margin-top: 2.5%;
+    text-align: center;
+    height: 15%;
+    line-height: normal;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-name{
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register-input{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 40px;
+    background: #fff7;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #fff;
+    transition: all .5s;
+}
+
+.register-input:focus{
+    border-bottom: 3px solid #007bff;
+}
+
+.btn{
+    max-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.to-login-line{
+    color: #fff;
+    text-align: center;
+}
+
+.to-login{
+    color: #007bff;
+}
