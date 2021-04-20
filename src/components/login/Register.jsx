@@ -18,7 +18,7 @@ export default function Register() {
                 <input type="password" className="register-input" placeholder="Confirm your password..." />
                 <button className="btn btn-primary">Register</button>
             </form>
-            <p className="to-login-line">Already have an account? <Link className="to-login" to="/login">Login</Link></p>
+            <p className="to-login-line-from-reg">Already have an account? <Link className="to-login" to="/login">Login</Link></p>
         </div>
     )
 }
