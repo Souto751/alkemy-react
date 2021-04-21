@@ -12,38 +12,6 @@ export default function Home() {
 
     const teamMembers = [
         {
-            name: "Iron Man",
-            img: 'https://www.superherodb.com/pictures2/portraits/10/100/85.jpg',
-            stats: [
-                {
-                    name: "intelligence",
-                    value: 100
-                },
-                {
-                    name: "strength",
-                    value: 85
-                },
-                {
-                    name: "speed",
-                    value: 58
-                },
-                {
-                    name: "durability",
-                    value: 85
-                },
-                {
-                    name: "power",
-                    value: 100
-                },
-                {
-                    name: "combat",
-                    value: 64
-                },
-            ],
-            link: "/character/346",
-            alignment: "good"
-        },
-        {
             name: "Loki",
             img: 'https://www.superherodb.com/pictures2/portraits/10/100/928.jpg',
             stats: [
@@ -204,7 +172,7 @@ export default function Home() {
             alignment: "good"
         }
     ]
-
+    
     return (
         <div className="home">
             <div className="home-top-components">
@@ -213,7 +181,7 @@ export default function Home() {
                 <AvgStats />
             </div>
             <div className="team-members-div">
-                <Hero teamMembers={teamMembers} />
+                <Hero heroesList={teamMembers} />
             </div>
         </div>
     )

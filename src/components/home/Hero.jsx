@@ -11,10 +11,11 @@ import Speed from '../../images/speed.png';
 import '../../style/hero.css';
 
 export default function Hero(props) {
+
     return (
         <div className="heroes-div">
         {
-            props.teamMembers.map((x, i = 0, j = 1) => {
+            props.heroesList.map((x, i = 0, j = 1) => {
                 return <div className={`hero-div ${x.alignment}`} key={i}>
                     <div><img src={x.img} alt="hero-img" className="hero-img"/></div>
                     <p className={`hero-name ${x.alignment === "good" ? "good-ch" : "evil-ch"}`}>{x.name}</p>
@@ -45,7 +46,7 @@ export default function Hero(props) {
                         </div>
                     </div>
                     <div className="hero-buttons">
-                        <Link to={x.link} hero={x}><button className="hero-info-btn">i</button></Link>
+                        <Link to={{pathname: x.link, state:{selectedhero: x}}} heroInfo={x.img}><button className="hero-info-btn">i</button></Link>
                         <button className="hero-delete-btn">x</button>
                     </div>
                 </div>

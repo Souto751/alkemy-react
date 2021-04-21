@@ -1,0 +1,120 @@
+.hero-page{
+    width: 100vw;
+    height: 100vh;
+    background: #000c;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-profile-img-div{
+    width: 40%;
+    height: 150%;
+    min-width: 250px;
+    transform: rotate(10deg);
+    margin-top: -200px;
+    margin-left: -80px;
+}
+
+.hero-profile-img{
+    width: 100%;
+    height: 100%;
+}
+
+.hero-progile-data-div{
+    width: 60%;
+    height: 100%;
+}
+
+.character-info{
+    display: flex;
+    gap: 15px;
+    min-width: 50%;
+    padding-left: 20px;
+}
+
+.character-info h3{
+    color: #fff;
+    font-weight: bold;
+}
+
+.character-info p{
+    color: #fff;
+    font-size: 25px;
+}
+
+.character-profile-name{
+    color: #fffaf0;
+    font-weight: bold;
+    width: 100%;
+}
+
+.character-profile-info-div{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.character-info-stats{
+    display: flex;
+    width: 100%;
+    gap: 5%;
+}
+
+.character-profile-ps-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.character-profile-ps-div p{
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+.ps-profile-div{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+}
+
+.character-profile-ps-div div img{
+    width: 100%;
+}
+
+.ps-prof-in{
+    background: #0aa;
+}
+
+.ps-prof-st{
+    background: #0a0;
+}
+
+.ps-prof-sp{
+    background: #00a;
+}
+
+.ps-prof-du{
+    background: #707;
+}
+
+.ps-prof-po{
+    background: #aa0;
+}
+
+.ps-prof-co{
+    background: #700;
+}
+
+.go-home-btn{
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #fffaf0;
+    font-size: 18px;
+    color: #2a2b2c;
+}

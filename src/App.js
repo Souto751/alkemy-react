@@ -23,13 +23,14 @@ import './style/global.css'
 
 //------Component------//
 export default function App() {
+
   return (
     <Router>
       <div className="App">
         
         <Route exact path="/" component={Home} />
 
-        <Route path="/info/character/" component={Character} />
+        <Route path="/character/" component={Character} />
 
         <Route exact path="/login" component={Login} />
 
