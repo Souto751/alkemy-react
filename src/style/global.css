@@ -12,6 +12,7 @@ body{
     background-image: url("https://cdn.wallpapersafari.com/67/39/7xp51q.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 .no-selectable{
