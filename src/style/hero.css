@@ -11,28 +11,12 @@
     overflow: hidden;
 }
 
-.hero-div1{
-    grid-column: 1/2;
+.good{
+    box-shadow: inset 0 0 10px #0c0;
 }
 
-.hero-div2{
-    grid-column: 2/3;
-}
-
-.hero-div3{
-    grid-column: 3/4;
-}
-
-.hero-div4{
-    grid-column: 4/5;
-}
-
-.hero-div5{
-    grid-column: 5/6;
-}
-
-.hero-div6{
-    grid-column: 6/7;
+.bad{
+    box-shadow: inset 0 0 10px #c00;
 }
 
 .hero-img{
@@ -47,6 +31,15 @@
     color: #fff;
 }
 
+.good-ch{
+    background: #0c07;
+    color: #2a2b2c;
+}
+
+.evil-ch{
+    background: #c007;
+}
+
 .hero-ps{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -54,10 +47,79 @@
 
 .hero-power-stat{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .hero-ps-logo{
-    width: 33%;
-    
+    width: 100%;
+}
+
+.hero-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-buttons button{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 0 5px #000;
+}
+
+.hero-info-btn{
+    background: #0c0;
+    box-shadow: 0 0 5px #000;
+}
+
+.hero-delete-btn{
+    background: #d00;
+    box-shadow: 0 0 5px #000;
+}
+
+.hero-ps-value{
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.hero-ps-logo-div{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.hero-ps-logo1{
+    background: #0aa;
+}
+
+.hero-ps-logo2{
+    background: #0a0;
+}
+
+.hero-ps-logo3{
+    background: #00a;
+}
+
+.hero-ps-logo4{
+    background: #707;
+}
+
+.hero-ps-logo5{
+    background: #aa0;
+}
+
+.hero-ps-logo6{
+    background: #700;
 }

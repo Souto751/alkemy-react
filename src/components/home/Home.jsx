@@ -72,7 +72,7 @@ export default function Home() {
                     value: 60
                 },
             ],
-            link: "/character/346",
+            link: "/character/414",
             alignment: "bad"
         },
         {
@@ -104,7 +104,7 @@ export default function Home() {
                     value: 60
                 },
             ],
-            link: "/character/346",
+            link: "/character/414",
             alignment: "bad"
         },
         {
@@ -168,7 +168,7 @@ export default function Home() {
                     value: 60
                 },
             ],
-            link: "/character/346",
+            link: "/character/414",
             alignment: "bad"
         },
         {

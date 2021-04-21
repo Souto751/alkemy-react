@@ -69,28 +69,11 @@
     align-self: center;
     font-size: 20px;
     font-weight: bold;
+    color: #fff;
 }
 
-.color-int{
-    color: #0AA;
-}
-
-.color-str{
-    color: #0a0;
-}
-
-.color-spd{
-    color:#00a;
-}
-
-.color-dur{
-    color: #707;
-}
-
-.color-pow{
-    color: #aa0;
-}
-
-.color-comb{
-    color: #700;
+.best-stat-div{
+    border-radius: 50%;
+    background: #aa0;
+    border: 3px solid #000;
 }

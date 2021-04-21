@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import Strength from '../../images/strength.png';
 import Combat from '../../images/combat.png';
@@ -14,34 +15,38 @@ export default function Hero(props) {
         <div className="heroes-div">
         {
             props.teamMembers.map((x, i = 0, j = 1) => {
-                return <div className={`hero-div ${"hero-div" + j} ${x.alignment === "good" ? "good-character" : "evil-character"}`} key={i}>
+                return <div className={`hero-div ${x.alignment}`} key={i}>
                     <div><img src={x.img} alt="hero-img" className="hero-img"/></div>
-                    <p className="hero-name">{x.name}</p>
+                    <p className={`hero-name ${x.alignment === "good" ? "good-ch" : "evil-ch"}`}>{x.name}</p>
                     <div className="hero-ps">
                         <div className="hero-power-stat">
-                            <img src={Intelligence} alt="power-stat" className="hero-ps-logo"/>
-                            <p>{x.stats[0].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo1`}><img src={Intelligence} alt="power-stat" className="hero-ps-logo"/></div>
+                            <p className={`hero-ps-value hero-ps1`}>{x.stats[0].value}</p>
                         </div>
                         <div className="hero-power-stat">
-                            <p>{x.stats[1].value}</p>
-                            <img src={Strength} alt="power-stat" className="hero-ps-logo"/>
+                            <p className={`hero-ps-value hero-ps2`}>{x.stats[1].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo2`}><img src={Strength} alt="power-stat" className="hero-ps-logo"/></div>
                         </div>
                         <div className="hero-power-stat">
-                            <img src={Speed} alt="power-stat" className="hero-ps-logo"/>
-                            <p>{x.stats[2].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo3`}><img src={Speed} alt="power-stat" className="hero-ps-logo"/></div>
+                            <p className={`hero-ps-value hero-ps3`}>{x.stats[2].value}</p>
                         </div>
                         <div className="hero-power-stat">
-                            <p>{x.stats[3].value}</p>
-                            <img src={Durability} alt="power-stat" className="hero-ps-logo"/>
+                            <p className={`hero-ps-value hero-ps4`}>{x.stats[3].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo4`}><img src={Durability} alt="power-stat" className="hero-ps-logo"/></div>
                         </div>
                         <div className="hero-power-stat">
-                            <img src={Power} alt="power-stat" className="hero-ps-logo"/>
-                            <p>{x.stats[4].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo5`}><img src={Power} alt="power-stat" className="hero-ps-logo"/></div>
+                            <p className={`hero-ps-value hero-ps5`}>{x.stats[4].value}</p>
                         </div>
                         <div className="hero-power-stat">
-                            <p>{x.stats[5].value}</p>
-                            <img src={Combat} alt="power-stat" className="hero-ps-logo"/>
+                            <p className={`hero-ps-value hero-ps6`}>{x.stats[5].value}</p>
+                            <div className={`hero-ps-logo-div hero-ps-logo6`}><img src={Combat} alt="power-stat" className="hero-ps-logo"/></div>
                         </div>
+                    </div>
+                    <div className="hero-buttons">
+                        <Link to={x.link} hero={x}><button className="hero-info-btn">i</button></Link>
+                        <button className="hero-delete-btn">x</button>
                     </div>
                 </div>
             })
