@@ -1,5 +1,5 @@
 .team-avg-stats{
-    grid-column: 9/11;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 import Strength from '../../images/strength.png';
@@ -15,27 +15,27 @@ export default function HeroInfo(props) {
             <h1 className="character-profile-name">{props.props.name}</h1>
             <div className="character-info">
                 <h3>Full Name: </h3>
-                <p>Loki</p>
+                <p>{props.props.fullname}</p>
             </div>
             <div className="character-info">
                 <h3>Work Place:</h3>
-                <p>Asgard</p>
+                <p>{props.props.work}</p>
             </div>
             <div className="character-info">
                 <h3>Height:</h3>
-                <p>123</p>
+                <p>{props.props.height}</p>
             </div>
             <div className="character-info">
                 <h3>Weight:</h3>
-                <p>123</p>
+                <p>{props.props.weight}</p>
             </div>
             <div className="character-info">
                 <h3>Eyes Color:</h3>
-                <p>blue</p>
+                <p>{props.props.eyes}</p>
             </div>
             <div className="character-info">
                 <h3>Hair Color:</h3>
-                <p>green</p>
+                <p>{props.props.hair}</p>
             </div>
             <div className="character-info">
                 <h3>Alignment:</h3>

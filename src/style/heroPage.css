@@ -21,7 +21,7 @@
     height: 100%;
 }
 
-.hero-progile-data-div{
+.hero-profile-data-div{
     width: 60%;
     height: 100%;
 }
@@ -117,4 +117,59 @@
     background: #fffaf0;
     font-size: 18px;
     color: #2a2b2c;
+}
+
+@media screen and (max-width: 800px){
+    .hero-page{
+        height: auto;
+        width: 100vw;
+        flex-direction: column;
+        overflow: visible;
+    }
+    .character-info{
+        width: 100%;
+    }
+    .hero-profile-img-div{
+        width: 80%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        transform: rotate(0deg);
+        margin-top: 0;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+    .hero-profile-img{
+        max-width: 200px;
+        min-width: 250px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #fff;
+    }
+    .character-profile-info-div{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 10px;
+    }
+    .character-info-stats{
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-profile-data-div{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .character-info h3{
+        font-size: 25px;
+    }
+    
+    .character-info p{
+        font-size: 20px;
+    }
 }

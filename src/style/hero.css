@@ -1,6 +1,7 @@
 .heroes-div{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
 }
@@ -9,6 +10,7 @@
     background: #000a;
     border-radius: 10px;
     overflow: hidden;
+    width: 250px;
 }
 
 .good{
@@ -72,7 +74,7 @@
 }
 
 .hero-info-btn{
-    background: #0c0;
+    background: #ff0;
     box-shadow: 0 0 5px #000;
 }
 
