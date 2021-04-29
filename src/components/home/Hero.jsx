@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 
 import Strength from '../../images/strength.png';
@@ -12,18 +12,23 @@ import '../../style/hero.css';
 
 export default function Hero() {
 
+    const current = JSON.parse(localStorage.getItem('team'));
+    const [currentState, setCurrentState] = useState(current);
+
+    const update = () => {
+        setCurrentState(current);
+    }
 
     const deleteTeam = (i) => {
-        const current = JSON.parse(localStorage.getItem('team'));
         current.splice(i, 1);
         localStorage.setItem('team', JSON.stringify(current));
-        <Redirect to="/" />
+        update();
     }
 
     return (
         <div className="heroes-div">
         {
-            JSON.parse(localStorage.getItem('team')).map((x, i = 0) => {
+            currentState.map((x, i = 0) => {
                 return <div className={`hero-div ${x.biography.alignment}`} key={i}>
                     <div><img src={x.image.url} alt="hero-img" className="hero-img"/></div>
                     <p className={`hero-name ${x.biography.alignment === "good" ? "good-ch" : "evil-ch"}`}>{x.name}</p>
@@ -54,7 +59,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <div className="hero-buttons">
-                        <Link to={{pathame: `/characters/${x.id}`, state: x}}><button className="hero-info-btn">i</button></Link>
+                        <Link to={{pathname: `/alkemy-react/characters/${x.id}`, state: x}}><button className="hero-info-btn">i</button></Link>
                         <button className="hero-delete-btn" onClick={() => deleteTeam(i)}>x</button>
                     </div>
                 </div>

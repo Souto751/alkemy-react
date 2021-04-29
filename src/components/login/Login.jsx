@@ -29,6 +29,6 @@ export default function Login(props) {
             </form>
         </div>
         :
-        <Redirect to="/" />
+        <Redirect to="/alkemy-react/" />
     )
 }

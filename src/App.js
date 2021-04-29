@@ -81,13 +81,13 @@ export default function App() {
     <Router>
       <div className="App">
         
-        <Route exact path="/">{logged === "false" ? <Redirect to="/login" /> : <Home />}</Route>
+        <Route exact path="/alkemy-react/">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <Home />}</Route>
 
-        <Route exact path="/characters-list">{logged === "false" ? <Redirect to="/login" /> : <HeroesDB heroes={heroesList} />}</Route>
+        <Route exact path="/alkemy-react/characters-list">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <HeroesDB heroes={heroesList} />}</Route>
 
-        <Route path="/characters/">{logged === "false" ? <Redirect to="/login" /> : <Character />}</Route>
+        <Route path="/alkemy-react/characters/">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <Character />}</Route>
 
-        <Route exact path="/login"><Login log={setLogged} /></Route>
+        <Route exact path="/alkemy-react/login"><Login log={setLogged} /></Route>
 
       </div>
     </Router>

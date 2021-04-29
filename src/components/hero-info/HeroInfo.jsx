@@ -15,7 +15,7 @@ export default function HeroInfo(props) {
 
     return (
         <div className="character-profile-info-div">
-            <Link to="/"><button className="go-home-btn">←Go Back</button></Link>
+            <Link to="/alkemy-react/"><button className="go-home-btn">←Go Back</button></Link>
             <h1 className="character-profile-name">{hero.name}</h1>
             <div className="character-info">
                 <h3>Full Name: </h3>
