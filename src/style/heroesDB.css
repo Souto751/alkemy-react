@@ -1,0 +1,81 @@
+.heroes-db{
+    width: 100%;
+    min-height: 100vh;
+    background: #000c;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.return-home{
+    height: 10vh;
+    min-height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.heroe-list-div{
+    height: 15vh;
+    min-height: 50px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.good-hero{
+    background: #0707;
+}
+
+.bad-hero{
+    background: #7007;
+}
+
+.img-div img{
+    height: 100%;
+}
+
+.name-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name-div p{
+    color: #fff;
+    line-height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heroe-list-div button{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    outline: none;
+    cursor: pointer;
+}
+
+.goto-info-btn{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.buttons-div{
+    display: flex;
+    flex-direction: row;
+    min-width: 120px;
+    justify-content: space-around;
+}
+
+.info-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}

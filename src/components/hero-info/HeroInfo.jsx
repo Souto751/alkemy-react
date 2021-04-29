@@ -9,62 +9,66 @@ import Durability from '../../images/durability.png';
 import Speed from '../../images/speed.png';
 
 export default function HeroInfo(props) {
+
+    const hero = JSON.parse(localStorage.getItem('hero'));
+    console.log(hero)
+
     return (
         <div className="character-profile-info-div">
             <Link to="/"><button className="go-home-btn">←Go Back</button></Link>
-            <h1 className="character-profile-name">{props.props.name}</h1>
+            <h1 className="character-profile-name">{hero.name}</h1>
             <div className="character-info">
                 <h3>Full Name: </h3>
-                <p>{props.props.fullname}</p>
+                <p>{hero.biography["full-name"]}</p>
             </div>
             <div className="character-info">
                 <h3>Work Place:</h3>
-                <p>{props.props.work}</p>
+                <p>{hero.work.base}</p>
             </div>
             <div className="character-info">
                 <h3>Height:</h3>
-                <p>{props.props.height}</p>
+                <p>{hero.appearance.height[1]}</p>
             </div>
             <div className="character-info">
                 <h3>Weight:</h3>
-                <p>{props.props.weight}</p>
+                <p>{hero.appearance.weight[1]}</p>
             </div>
             <div className="character-info">
                 <h3>Eyes Color:</h3>
-                <p>{props.props.eyes}</p>
+                <p>{hero.appearance["eye-color"]}</p>
             </div>
             <div className="character-info">
                 <h3>Hair Color:</h3>
-                <p>{props.props.hair}</p>
+                <p>{hero.appearance["hair-color"]}</p>
             </div>
             <div className="character-info">
                 <h3>Alignment:</h3>
-                <p>{props.props.alignment}</p>
+                <p>{hero.biography.alignment}</p>
             </div>
             <div className="character-info-stats">
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-in"><img src={Intelligence} alt=""/></div>
-                    <p>{props.props.stats[0].value}</p>
+                    <p>{hero.powerstats.intelligence}</p>
                 </div>
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-st"><img src={Strength} alt=""/></div>
-                    <p>{props.props.stats[1].value}</p>
+                    <p>{hero.powerstats.strength}</p>
                 </div>
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-sp"><img src={Speed} alt=""/></div>
-                    <p>{props.props.stats[2].value}</p>
+                    <p>{hero.powerstats.speed}</p>
                 </div>
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-du"><img src={Durability} alt=""/></div>
-                    <p>{props.props.stats[3].value}</p>
+                    <p>{hero.powerstats.durability}</p>
                 </div>
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-po"><img src={Power} alt=""/></div>
-                    <p>{props.props.stats[4].value}</p>
+                    <p>{hero.powerstats.power}</p>
                 </div>
                 <div className="character-profile-ps-div">
                     <div className="ps-profile-div ps-prof-co"><img src={Combat} alt=""/></div>
-                    <p>{props.props.stats[5].value}</p>
+                    <p>{hero.powerstats.combat}</p>
                 </div>
             </div>
         </div>

@@ -3,16 +3,14 @@
 //------------------//
 
 //------React------//
-import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 //------Components------//
 import Home from './components/home/Home';
 import Character from './components/hero-info/HeroPage';
 import Login from './components/login/Login';
-import Register from './components/login/Register';
-import PswdRecovery from './components/login/PswdRecovery';
-import PswdChange from './components/login/PswdChange';
+import HeroesDB from './components/heroes-list/heroesDB';
 
 //------Style------//
 import './style/global.css'
@@ -24,21 +22,72 @@ import './style/global.css'
 //------Component------//
 export default function App() {
 
+  const [heroesList, setHeroesList] = useState([{id: 0}])
+  const [logged, setLogged] = useState("false")
+
+  useEffect(() => {
+    const loadCharacters = (id) => {
+      fetch(`https://www.superheroapi.com/api.php/102149535345795/${id}`, {
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json'
+        }
+      })
+        .then(res => {return res.json()})
+        .then(res => {
+          if(res.response === "error"){
+            loadCharacters(id);
+          }else{
+            localStorage.setItem('heroesList', JSON.stringify([...JSON.parse(localStorage.getItem('heroesList')), res]));
+          }
+        })
+    }
+
+    localStorage.setItem('heroesList', JSON.stringify([{id: "0"}]));
+
+    for(let i = 1; i < 732; i++){
+      loadCharacters(i);
+    }
+    
+    localStorage.setItem('logged', "false");
+    localStorage.setItem('avgIntelligence', 0);
+    localStorage.setItem('avgStrength', 0);
+    localStorage.setItem('avgSpeed', 0);
+    localStorage.setItem('avgDurability', 0);
+    localStorage.setItem('avgPower', 0);
+    localStorage.setItem('avgCombat', 0);
+    localStorage.setItem('avgHeight', 0);
+    localStorage.setItem('avgWeight', 0);
+    localStorage.setItem('goodCounter', 0);
+    localStorage.setItem('badCounter', 0);
+    localStorage.setItem('bestStat', "none");
+    localStorage.setItem('hero', JSON.stringify({}));
+    localStorage.setItem("team", JSON.stringify([]));
+  }, [])
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('heroesList'));
+    const login = localStorage.getItem("login");
+    if(data.length > 1){
+      setHeroesList(data);
+    }
+    setLogged(login);
+  }, [])
+
+  
+
+
   return (
     <Router>
       <div className="App">
         
-        <Route exact path="/" component={Home} />
+        <Route exact path="/">{logged === "false" ? <Redirect to="/login" /> : <Home />}</Route>
 
-        <Route path="/character/" component={Character} />
+        <Route exact path="/characters-list">{logged === "false" ? <Redirect to="/login" /> : <HeroesDB heroes={heroesList} />}</Route>
 
-        <Route exact path="/login" component={Login} />
+        <Route path="/characters/">{logged === "false" ? <Redirect to="/login" /> : <Character />}</Route>
 
-        <Route exact path="/register" component={Register} />
-
-        <Route exact path="/reset-password" component={PswdRecovery} />
-
-        <Route exact path="/reset-password/enter-new-password" component={PswdChange} />
+        <Route exact path="/login"><Login log={setLogged} /></Route>
 
       </div>
     </Router>
