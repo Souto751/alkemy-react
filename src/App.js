@@ -4,13 +4,13 @@
 
 //------React------//
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 
 //------Components------//
 import Home from './components/home/Home';
 import Character from './components/hero-info/HeroPage';
 import Login from './components/login/Login';
-import HeroesDB from './components/heroes-list/heroesDB';
+import HeroesDB from './components/heroes-list/HeroesDB';
 
 //------Style------//
 import './style/global.css'
@@ -23,7 +23,7 @@ import './style/global.css'
 export default function App() {
 
   const [heroesList, setHeroesList] = useState([{id: 0}])
-  const [logged, setLogged] = useState("false")
+  const [logged, setLogged] = useState("none")
 
   useEffect(() => {
     const loadCharacters = (id) => {
@@ -49,7 +49,7 @@ export default function App() {
       loadCharacters(i);
     }
     
-    localStorage.setItem('logged', "false");
+    localStorage.setItem('token', "none");
     localStorage.setItem('avgIntelligence', 0);
     localStorage.setItem('avgStrength', 0);
     localStorage.setItem('avgSpeed', 0);
@@ -67,7 +67,7 @@ export default function App() {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('heroesList'));
-    const login = localStorage.getItem("login");
+    const login = localStorage.getItem("token");
     if(data.length > 1){
       setHeroesList(data);
     }
@@ -80,14 +80,15 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        
-        <Route exact path="/alkemy-react/">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <Home />}</Route>
+        <Switch>
+          <Route exact path="/alkemy-react/">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <Home />}</Route>
 
-        <Route exact path="/alkemy-react/characters-list">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <HeroesDB heroes={heroesList} />}</Route>
+          <Route exact path="/alkemy-react/characters-list">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <HeroesDB heroes={heroesList} />}</Route>
 
-        <Route path="/alkemy-react/characters/">{logged === "false" ? <Redirect to="/alkemy-react/login" /> : <Character />}</Route>
+          <Route path="/alkemy-react/characters/">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <Character />}</Route>
 
-        <Route exact path="/alkemy-react/login"><Login log={setLogged} /></Route>
+          <Route exact path="/alkemy-react/login"><Login log={setLogged} /></Route>
+        </Switch>
 
       </div>
     </Router>

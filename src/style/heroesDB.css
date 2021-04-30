@@ -71,6 +71,7 @@
     flex-direction: row;
     min-width: 120px;
     justify-content: space-around;
+    margin-right: 15px;
 }
 
 .info-button{

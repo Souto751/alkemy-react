@@ -8,7 +8,7 @@ import Intelligence from '../../images/intelligence.png';
 import Durability from '../../images/durability.png';
 import Speed from '../../images/speed.png';
 
-export default function HeroInfo(props) {
+export default function HeroInfo() {
 
     const hero = JSON.parse(localStorage.getItem('hero'));
     console.log(hero)

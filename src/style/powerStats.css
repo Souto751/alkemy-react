@@ -74,6 +74,34 @@
 
 .best-stat-div{
     border-radius: 50%;
-    background: #aa0;
     border: 3px solid #000;
+    overflow: hidden;
+}
+
+.best-intelligence{
+    background: #0AA;
+}
+
+.best-strength{
+    background: #0a0;
+}
+
+.best-speed{
+    background: #00a;
+}
+
+.best-durability{
+    background: #707;
+}
+
+.best-power{
+    background: #aa0;
+}
+
+.best-combat{
+    background: #700;
+}
+
+.best-none{
+    background: #0007;
 }

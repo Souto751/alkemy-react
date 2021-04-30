@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link, Redirect} from 'react-router-dom';
 
 import '../../style/heroesDB.css';
 
-export default function heroesDB() {
+export default function HeroesDB() {
 
     const heroes = JSON.parse(localStorage.getItem('heroesList'));
+    const [added, setAdded] = useState(false);
 
     const addTeam = (hero) => {
         const current = JSON.parse(localStorage.getItem('team'));
         let teamWeight = 0;
         let teamHeight = 0;
+        let teamStats = [
+            {name: "intelligence", value: 0},
+            {name: "strength", value: 0},
+            {name: "speed", value: 0},
+            {name: "durability", value: 0},
+            {name: "power", value: 0},
+            {name: "combat", value: 0}
+        ];
         if(current.length === 6){
             alert("Maximum size of team members reached");
         }else{
@@ -38,6 +47,7 @@ export default function heroesDB() {
                         localStorage.setItem('avgWeight', parseInt(localStorage.getItem('avgWeight')) + (hero.appearance.weight[1] === "" ? 0 : parseInt(hero.appearance.weight[1].split(" ")[0])));
 
                         localStorage.setItem('team', JSON.stringify(current))
+                        alert(hero.name + " added to the team");
                     }else{
                         alert("There are 3 characters with 'good' alignment.");
                     }
@@ -54,6 +64,7 @@ export default function heroesDB() {
                         localStorage.setItem('avgCombat', parseInt(localStorage.getItem('avgCombat')) + (hero.powerstats["combat"] === "null" ? 0 : parseInt(hero.powerstats["combat"])));
 
                         localStorage.setItem('team', JSON.stringify(current))
+                        alert(hero.name + " added to the team");
                     }else{
                         alert("There are 3 characters with 'bad' alignment.");
                     }
@@ -67,14 +78,24 @@ export default function heroesDB() {
                 localStorage.setItem('avgWeight', parseInt(teamWeight / current.length));
                 localStorage.setItem('avgHeight', parseInt(teamHeight / current.length));
 
-                alert(hero.name + " added to the team");
+                setAdded(true);
             }else{
                 alert("The hero is already on the team, please select another");
             }
         }
-        }
+        teamStats[0].value = parseInt(localStorage.getItem('avgIntelligence'));
+        teamStats[1].value = parseInt(localStorage.getItem('avgStrength'));
+        teamStats[2].value = parseInt(localStorage.getItem('avgIntelligence'));
+        teamStats[3].value = parseInt(localStorage.getItem('avgDurability'));
+        teamStats[4].value = parseInt(localStorage.getItem('avgPower'));
+        teamStats[5].value = parseInt(localStorage.getItem('avgCombat'));
+
+        teamStats.sort((a, b) => b.value - a.value);
+        localStorage.setItem('bestStat', teamStats[0].name)
+    }
 
     return (
+        added === false ? 
         <div className="heroes-db">
             <div className="return-home">
                 <Link to="/alkemy-react/"><button>← Go Back</button></Link>
@@ -87,7 +108,7 @@ export default function heroesDB() {
                     <div className="name-div"><p>{x.name}</p></div>
                     <div className="buttons-div">
                         <button onClick={() => addTeam(x)}>+</button>
-                        <div className="info-button"><Link to={`/alkemy-react/characters/${x.id}`} hero={x}><button className="goto-info-btn" onClick={() => localStorage.setItem("hero", JSON.stringify(x))}>i</button></Link></div>
+                        <div className="info-button"><Link to={`/alkemy-react/characters/${x.id}`}><button className="goto-info-btn" onClick={() => localStorage.setItem("hero", JSON.stringify(x))}>i</button></Link></div>
                     </div>
                 </div>
                 :
@@ -95,5 +116,7 @@ export default function heroesDB() {
             })
         }
         </div>
+        :
+        <Redirect to="/alkemy-react/" />
     )
 }
