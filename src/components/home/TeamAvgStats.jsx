@@ -12,7 +12,7 @@ export default function TeamAvgStats() {
         setWeight(localStorage.getItem("avgWeight"));
         setHeight(localStorage.getItem("avgHeight"));
         forceUpdate(n => !n);
-    }, [])
+    })
 
     return (
         <div className="team-avg-stats">

@@ -63,7 +63,7 @@ export default function TeamPowerstats() {
         setPower(localStorage.getItem('avgPower'));
         setCombat(localStorage.getItem('avgCombat'));
         forceUpdate(n => !n);
-    }, [])
+    })
 
     return (
         <div className="power-stats">

@@ -17,13 +17,21 @@ export default function Hero() {
     const [, forceUpdate] = useState(false);
 
     const deleteTeam = (i) => {
+        let teamStats = [
+            {name: "intelligence", value: 0},
+            {name: "strength", value: 0},
+            {name: "speed", value: 0},
+            {name: "durability", value: 0},
+            {name: "power", value: 0},
+            {name: "combat", value: 0}
+        ];
 
-        localStorage.setItem('avgIntelligence', parseInt(localStorage.getItem('avgIntelligence')) - current[i].powerstats["intelligence"]);
-        localStorage.setItem('avgStrength', parseInt(localStorage.getItem('avgStrength')) - current[i].powerstats["strength"]);
-        localStorage.setItem('avgSpeed', parseInt(localStorage.getItem('avgSpeed')) - current[i].powerstats["speed"]);
-        localStorage.setItem('avgDurability', parseInt(localStorage.getItem('avgDurability')) - current[i].powerstats["durability"]);
-        localStorage.setItem('avgPower', parseInt(localStorage.getItem('avgPower')) - current[i].powerstats["power"]);
-        localStorage.setItem('avgCombat', parseInt(localStorage.getItem('avgCombat')) - current[i].powerstats["combat"]);
+        localStorage.setItem('avgIntelligence', parseInt(localStorage.getItem('avgIntelligence')) - (current[i].powerstats["intelligence"] === "null" ? 0 : parseInt(current[i].powerstats["intelligence"])));
+        localStorage.setItem('avgStrength', parseInt(localStorage.getItem('avgStrength')) - (current[i].powerstats["strength"] === "null" ? 0 : parseInt(current[i].powerstats["strength"])));
+        localStorage.setItem('avgSpeed', parseInt(localStorage.getItem('avgSpeed')) - (current[i].powerstats["speed"] === "null" ? 0 : parseInt(current[i].powerstats["speed"])));
+        localStorage.setItem('avgDurability', parseInt(localStorage.getItem('avgDurability')) - (current[i].powerstats["durability"] === "null" ? 0 : parseInt(current[i].powerstats["durability"])));
+        localStorage.setItem('avgPower', parseInt(localStorage.getItem('avgPower')) - (current[i].powerstats["power"] === "null" ? 0 : parseInt(current[i].powerstats["power"])));
+        localStorage.setItem('avgCombat', parseInt(localStorage.getItem('avgCombat')) - (current[i].powerstats["combat"] === "null" ? 0 : parseInt(current[i].powerstats["combat"])));
 
         if(current[i].biography.alignment === "good"){
             localStorage.setItem('goodCounter', parseInt(localStorage.getItem('goodCounter')) - 1);
@@ -48,6 +56,18 @@ export default function Hero() {
         }
 
         setCurrentState(current);
+
+        
+        teamStats[0].value = parseInt(localStorage.getItem('avgIntelligence'));
+        teamStats[1].value = parseInt(localStorage.getItem('avgStrength'));
+        teamStats[2].value = parseInt(localStorage.getItem('avgIntelligence'));
+        teamStats[3].value = parseInt(localStorage.getItem('avgDurability'));
+        teamStats[4].value = parseInt(localStorage.getItem('avgPower'));
+        teamStats[5].value = parseInt(localStorage.getItem('avgCombat'));
+
+        teamStats.sort((a, b) => b.value - a.value);
+        localStorage.setItem('bestStat', teamStats[0].name)
+
         forceUpdate(n => !n);
     }
 
