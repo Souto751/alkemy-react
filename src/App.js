@@ -22,8 +22,9 @@ import './style/global.css'
 //------Component------//
 export default function App() {
 
-  const [heroesList, setHeroesList] = useState([{id: 0}])
-  const [logged, setLogged] = useState("none")
+  const [heroesList, setHeroesList] = useState([{id: 0}]);
+  const [tok, setTok] = useState("none");
+  const [, forceUpdate] = useState(false);
 
   useEffect(() => {
     const loadCharacters = (id) => {
@@ -42,52 +43,84 @@ export default function App() {
           }
         })
     }
-
-    localStorage.setItem('heroesList', JSON.stringify([{id: "0"}]));
-
-    for(let i = 1; i < 732; i++){
-      loadCharacters(i);
+    
+    if(!localStorage.getItem('heroesList')){
+      localStorage.setItem('heroesList', JSON.stringify([{id: "0"}]));
     }
     
-    localStorage.setItem('token', "none");
-    localStorage.setItem('avgIntelligence', 0);
-    localStorage.setItem('avgStrength', 0);
-    localStorage.setItem('avgSpeed', 0);
-    localStorage.setItem('avgDurability', 0);
-    localStorage.setItem('avgPower', 0);
-    localStorage.setItem('avgCombat', 0);
-    localStorage.setItem('avgHeight', 0);
-    localStorage.setItem('avgWeight', 0);
-    localStorage.setItem('goodCounter', 0);
-    localStorage.setItem('badCounter', 0);
-    localStorage.setItem('bestStat', "none");
-    localStorage.setItem('hero', JSON.stringify({}));
-    localStorage.setItem("team", JSON.stringify([]));
+
+    if(JSON.parse(localStorage.getItem('heroesList')).length <= 1){
+      for(let i = 1; i < 732; i++){
+        loadCharacters(i);
+      }
+    }
+    
+    if(!localStorage.getItem('avgIntelligence')){
+      localStorage.setItem('avgIntelligence', 0)
+    }
+    if(!localStorage.getItem('avgStrength')){
+      localStorage.setItem('avgStrength', 0)
+    }
+    if(!localStorage.getItem('avgSpeed')){
+      localStorage.setItem('avgSpeed', 0)
+    }
+    if(!localStorage.getItem('avgDurability')){
+      localStorage.setItem('avgDurability', 0)
+    }
+    if(!localStorage.getItem('avgPower')){
+      localStorage.setItem('avgPower', 0)
+    }
+    if(!localStorage.getItem('avgCombat')){
+      localStorage.setItem('avgCombat', 0)
+    }
+    if(!localStorage.getItem('avgHeight')){
+      localStorage.setItem('avgHeight', 0)
+    }
+    if(!localStorage.getItem('avgWeight')){
+      localStorage.setItem('avgWeight', 0)
+    }
+    if(!localStorage.getItem('goodCounter')){
+      localStorage.setItem('goodCounter', 0)
+    }
+    if(!localStorage.getItem('badCounter')){
+      localStorage.setItem('badCounter', 0)
+    }
+    if(!localStorage.getItem('bestStat')){
+      localStorage.setItem('bestStat', "none")
+    }
+    if(!localStorage.getItem('hero')){
+      localStorage.setItem('hero', JSON.stringify({}))
+    }
+    if(!localStorage.getItem('team')){
+      localStorage.setItem('team', JSON.stringify([]))
+    }
+    if(!localStorage.getItem('token')){
+      localStorage.setItem('token', "none")
+    }else{
+      setTok(localStorage.getItem('token'));
+      forceUpdate(n => !n);
+    }
   }, [])
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('heroesList'));
-    const login = localStorage.getItem("token");
     if(data.length > 1){
       setHeroesList(data);
     }
-    setLogged(login);
+    forceUpdate(n => !n);
   }, [])
-
-  
-
 
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/alkemy-react/">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <Home />}</Route>
+          <Route exact path="/alkemy-react/">{localStorage.getItem('token') !== "none" ? <Redirect to="/alkemy-react/login" /> : <Home />}</Route>
 
-          <Route exact path="/alkemy-react/characters-list">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <HeroesDB heroes={heroesList} />}</Route>
+          <Route exact path="/alkemy-react/characters-list">{localStorage.getItem('token') !== "none" ? <Redirect to="/alkemy-react/login" /> : <HeroesDB heroes={heroesList} />}</Route>
 
-          <Route path="/alkemy-react/characters/">{logged === "none" ? <Redirect to="/alkemy-react/login" /> : <Character />}</Route>
+          <Route path="/alkemy-react/characters/">{localStorage.getItem('token') !== "none" ? <Redirect to="/alkemy-react/login" /> : <Character />}</Route>
 
-          <Route exact path="/alkemy-react/login"><Login log={setLogged} /></Route>
+          <Route exact path="/alkemy-react/login"><Login /></Route>
         </Switch>
 
       </div>

@@ -5,7 +5,7 @@ import '../../style/addHero.css';
 
 import dataBase from '../../images/database.png'
 
-export default function AddHero(props) {
+export default function AddHero() {
 
     return (
         <div className="addHero">

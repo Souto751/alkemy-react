@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import Strength from '../../images/strength.png';
 import Combat from '../../images/combat.png';
@@ -12,7 +12,7 @@ import '../../style/hero.css';
 
 export default function Hero() {
 
-    const current = JSON.parse(localStorage.getItem('team'));
+    const current = JSON.parse(localStorage.getItem('team')) || [];
     const [currentState, setCurrentState] = useState(current);
     const [, forceUpdate] = useState(false);
 
@@ -54,6 +54,7 @@ export default function Hero() {
     return (
         <div className="heroes-div">
         {
+            current.length > 0 ?
             currentState.map((x, i = 0) => {
                 return <div className={`hero-div ${x.biography.alignment}`} key={i}>
                     <div><img src={x.image.url} alt="hero-img" className="hero-img"/></div>
@@ -90,6 +91,8 @@ export default function Hero() {
                     </div>
                 </div>
             })
+            :
+            <div></div>
         }
         </div>
     )

@@ -14,16 +14,17 @@ export default function TeamPowerstats() {
     
     let bestStatImg;
     let bestStatClass;
+    const bestStat = localStorage.getItem('bestStat');
 
-    const[intelligence, setIntelligence] = useState(localStorage.getItem('avgIntelligence'));
-    const[strength, setStrength] = useState(localStorage.getItem('avgStrength'));
-    const[speed, setSpeed] = useState(localStorage.getItem('avgSpeed'));
-    const[durability, setDurability] = useState(localStorage.getItem('avgDurability'));
-    const[power, setPower] = useState(localStorage.getItem('avgPower'));
-    const[combat, setCombat] = useState(localStorage.getItem('avgCombat'));
+    const [intelligence, setIntelligence] = useState(localStorage.getItem('avgIntelligence'));
+    const [strength, setStrength] = useState(localStorage.getItem('avgStrength'));
+    const [speed, setSpeed] = useState(localStorage.getItem('avgSpeed'));
+    const [durability, setDurability] = useState(localStorage.getItem('avgDurability'));
+    const [power, setPower] = useState(localStorage.getItem('avgPower'));
+    const [combat, setCombat] = useState(localStorage.getItem('avgCombat'));
     const [, forceUpdate] = useState(false);
 
-    switch(localStorage.getItem('bestStat')){
+    switch(bestStat){
         case 'intelligence':
             bestStatImg = Intelligence;
             bestStatClass = "best-intelligence";
@@ -48,7 +49,7 @@ export default function TeamPowerstats() {
             bestStatImg = Combat;
             bestStatClass = "best-combat";
             break;
-        case 'none':
+        default:
             bestStatImg = None;
             bestStatClass = "best-none";
             break;
@@ -62,7 +63,7 @@ export default function TeamPowerstats() {
         setPower(localStorage.getItem('avgPower'));
         setCombat(localStorage.getItem('avgCombat'));
         forceUpdate(n => !n);
-    })
+    }, [])
 
     return (
         <div className="power-stats">

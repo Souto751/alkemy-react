@@ -5,11 +5,11 @@ import '../../style/heroesDB.css';
 
 export default function HeroesDB() {
 
-    const heroes = JSON.parse(localStorage.getItem('heroesList'));
+    const heroes = JSON.parse(localStorage.getItem('heroesList')) || [];
     const [added, setAdded] = useState(false);
 
     const addTeam = (hero) => {
-        const current = JSON.parse(localStorage.getItem('team'));
+        const current = JSON.parse(localStorage.getItem('team')) || [];
         let teamWeight = 0;
         let teamHeight = 0;
         let teamStats = [

@@ -11,7 +11,6 @@ import Speed from '../../images/speed.png';
 export default function HeroInfo() {
 
     const hero = JSON.parse(localStorage.getItem('hero'));
-    console.log(hero)
 
     return (
         <div className="character-profile-info-div">

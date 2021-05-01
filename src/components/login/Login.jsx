@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import '../../style/login.css';
 
-export default function Login(props) {
+
+export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("none");
     const [, forceUpdate] = useState(false);
 
     const handleSubmit = (e) => {
@@ -26,15 +26,18 @@ export default function Login(props) {
         }).then(res => {
             return res.json()
         }).then(res => {
-            res["error"] ? alert(res["error"]) : localStorage.setItem('token', res["token"]);
-            setToken(localStorage.getItem('token'));
-            forceUpdate(n => !n);
-            console.log(token);
+            if(res["error"]){alert(res["error"])}
+            else{
+                localStorage.setItem('token', res["token"]);
+                
+                forceUpdate(n => !n);
+            }
         })
     }
 
+    
+
     return (
-        token === "none" ?
         <div className="login">
             <h1 className="login-title">Login</h1>
             <form className="login-form" onSubmit={handleSubmit}>
@@ -44,8 +47,7 @@ export default function Login(props) {
                 <input type="password" className="login-input" placeholder="Enter your password..." onChange={(e) => {setPassword(e.target.value)}} />
                 <button className="btn btn-primary">Login</button>
             </form>
+            {localStorage.getItem('token') !== "none" ? <Redirect to="/alkemy-react" /> : ""}
         </div>
-        :
-        <Redirect to="/alkemy-react/" />
     )
 }
